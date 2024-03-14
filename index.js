@@ -1,13 +1,32 @@
 //-------------Recup time -------------------------
 let date = new Date();
 // -------------------------------------------------
+console.log(window.innerWidth);
+console.log(window.innerHeight);
+//------------Initilaisation du canvas------------
+
+let canvasWidthAndHeight = 1000;
+let mapZoomLevel = 15;
+if (window.innerWidth < 600) {
+  canvasWidthAndHeight = 500;
+  mapZoomLevel = 14;
+}
+
+canvasContainer.innerHTML = `<canvas
+id="canvas"
+width="${canvasWidthAndHeight}"
+height="${canvasWidthAndHeight}"
+style="width: 100%; height: auto"
+></canvas><div id="map" style="width: 100%"></div>`;
+
+//----------------------------------------------------------------
 
 const choiceLocations = document.getElementsByClassName("choiceLocation");
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
 let latitude = 48.37;
-let longitude = -4.77;
+let longitude = -4.765;
 let meteoData = [];
 let meteoDataMarine = [];
 let hourSelect = date.getHours();
@@ -96,7 +115,7 @@ function displayMap(latitude, longitude, modelViewMap) {
     container: "map", // container's id or the HTML element to render the map
     style: maptilersdk.MapStyle[modelViewMap],
     center: [longitude, latitude], // starting position [lng, lat]
-    zoom: 15, // starting zoom
+    zoom: mapZoomLevel, // starting zoom
   });
 }
 

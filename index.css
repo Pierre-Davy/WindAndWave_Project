@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(60, 152, 152);
+}
+
 h1 {
   text-align: center;
   text-decoration: underline;
@@ -27,16 +31,19 @@ button {
 }
 #alertWindDirection {
   margin: 0 auto;
-  width: 20%;
 
   text-align: center;
   color: red;
 }
 
 .alertWindDirectionBox {
+  margin: 0 auto;
+  padding: 5px;
+  width: fit-content;
   border: 1px solid red;
 }
 .containid {
+  background-color: gainsboro;
   width: 150px;
   height: auto;
   border: 1px solid black;
@@ -44,22 +51,25 @@ button {
   margin: 20px;
 }
 
-.canvasContainer {
+#canvasContainer {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 canvas {
+  min-height: 70vh;
   border: 1px solid black;
 }
 
-.canvasContainer {
+#canvasContainer {
+  min-height: 70vh;
   position: relative;
   width: 90%;
   margin: 0 auto;
 }
 #map {
+  min-height: 70vh;
   position: absolute;
   width: 100%;
   height: 100%;

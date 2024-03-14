@@ -25,10 +25,7 @@
         PLOUDALMEZEAU - Treompan
       </button>
     </div>
-    <div class="meteoDescription">
-      <button id="nextHour">Heure suivante</button>
-      <button id="previousHour">Heure precendente</button>
-    </div>
+
     <hr style="width: 50%" />
     <div class="meteoDescription">
       <div class="containid" id="dateContainer"></div>
@@ -51,19 +48,15 @@
       <div class="containid" id="wavePeriod"></div>
     </div>
     <hr style="width: 50%" />
+    <div class="meteoDescription">
+      <button id="nextHour">Heure suivante</button>
+      <button id="previousHour">Heure precendente</button>
+    </div>
     <div id="buttonViewMap">
       <button id="satelliteView">Vue satellite</button>
       <button id="streetView">Vue nom de rue</button>
     </div>
-    <div class="canvasContainer">
-      <canvas
-        id="canvas"
-        width="1000"
-        height="1000"
-        style="width: 100%; height: auto"
-      ></canvas>
-      <div id="map" style="width: 100%"></div>
-    </div>
+    <div id="canvasContainer"></div>
 
     <script src="index.js"></script>
   </body>
