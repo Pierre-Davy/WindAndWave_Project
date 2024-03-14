@@ -1,0 +1,22 @@
+
+[{"name": "le_conquet",
+    "LocateX": 48.37,
+    "LocateY": -4.77,
+    "LocationMapImg": "./assets/mapLeconquet.PNG",
+    "LocationSatImg":"./assets/satLeconquet.PNG"
+  },{"name":"landeda",
+    "LocateX": 48.60,
+    "LocateY": -4.61,
+    "LocationMapImg": "./assets/mapLandeda.PNG",
+    "LocationSatImg": "./assets/satLandeda.PNG"},
+    {"name":"plougonvelin",
+    "LocateX": 48.35,
+    "LocateY": -4.69,
+    "LocationMapImg": "./assets/mapPlougonvelin.PNG",
+    "LocationSatImg": "./assets/satPlougonvelin.PNG"},
+    {"name":"ploudalmezeau",
+    "LocateX": 48.57,
+    "LocateY": -4.65,
+    "LocationMapImg": "./assets/mapPloudalmezeau.PNG",
+    "LocationSatImg": "./assets/satPloudalmezeau.PNG"}]
+

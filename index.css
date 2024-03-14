@@ -1,0 +1,61 @@
+h1 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+button {
+  width: 200px;
+  height: 50px;
+  margin: 10px 20px;
+}
+
+#buttonViewMap {
+  text-align: center;
+  margin: 20px;
+}
+
+#nextHour {
+  background-color: aqua;
+}
+#previousHour {
+  background-color: aqua;
+}
+.meteoDescription {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.containid {
+  width: 150px;
+  height: auto;
+  border: 1px solid black;
+  text-align: center;
+  margin: 20px;
+}
+
+.canvasContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+canvas {
+  border: 1px solid black;
+}
+
+.canvasContainer {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+}
+#map {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.maplibregl-control-container {
+  display: none;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Document</title>
+    <script src="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.umd.min.js"></script>
+    <link
+      href="https://cdn.maptiler.com/maptiler-sdk-js/v1.2.0/maptiler-sdk.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>WIND AND WAVE</h1>
+    <div class="meteoDescription">
+      <button class="choiceLocation" id="le_conquet">LE CONQUET</button>
+      <button class="choiceLocation" id="plougonvelin">
+        PLOUGONVELIN - Treiz Hir
+      </button>
+      <button class="choiceLocation" id="landeda">
+        LANDEDA - Ste Marguerite
+      </button>
+      <button class="choiceLocation" id="ploudalmezeau">
+        PLOUDALMEZEAU - Treompan
+      </button>
+    </div>
+    <div class="meteoDescription">
+      <button id="nextHour">Heure suivante</button>
+      <button id="previousHour">Heure precendente</button>
+    </div>
+    <hr style="width: 50%" />
+    <div class="meteoDescription">
+      <div class="containid" id="dateContainer"></div>
+      <div class="containid" id="hourContainer"></div>
+      <div class="containid" id="temperature"></div>
+    </div>
+    <hr style="width: 50%" />
+    <div style="text-align: center"><h2>Caractéristiques du vent</h2></div>
+    <div class="meteoDescription">
+      <div class="containid" id="windspeed"></div>
+      <div class="containid" id="windgust"></div>
+      <div class="containid" id="winddirection"></div>
+    </div>
+    <hr style="width: 50%" />
+    <div style="text-align: center"><h2>Caractéristiques de la mer</h2></div>
+    <div class="meteoDescription">
+      <div class="containid" id="waveHeight"></div>
+      <div class="containid" id="waveDirection"></div>
+      <div class="containid" id="wavePeriod"></div>
+    </div>
+    <hr style="width: 50%" />
+    <div id="buttonViewMap">
+      <button id="satelliteView">Vue satellite</button>
+      <button id="streetView">Vue nom de rue</button>
+    </div>
+    <div class="canvasContainer">
+      <canvas
+        id="canvas"
+        width="1000"
+        height="1000"
+        style="width: 100%; height: auto"
+      ></canvas>
+      <div id="map" style="width: 100%"></div>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
