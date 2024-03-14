@@ -25,7 +25,17 @@ button {
   justify-content: center;
   flex-wrap: wrap;
 }
+#alertWindDirection {
+  margin: 0 auto;
+  width: 20%;
 
+  text-align: center;
+  color: red;
+}
+
+.alertWindDirectionBox {
+  border: 1px solid red;
+}
 .containid {
   width: 150px;
   height: auto;

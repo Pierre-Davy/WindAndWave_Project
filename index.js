@@ -11,6 +11,7 @@ let longitude = -4.77;
 let meteoData = [];
 let meteoDataMarine = [];
 let hourSelect = date.getHours();
+let locationId = 0;
 
 //------------Initilaisation de la carte------------
 
@@ -23,13 +24,13 @@ for (let i = 0; i < choiceLocations.length; i++) {
     function maLocation(lieu) {
       return lieu.name === choiceLocations[i].id;
     }
+    locationId = i;
     let result = locationData.find(maLocation);
-    console.log(result.name);
     latitude = result.LocateX;
     longitude = result.LocateY;
     recupData();
     displayMap(latitude, longitude, "STREETS");
-    return latitude, longitude;
+    return latitude, longitude, locationId;
   });
 }
 
@@ -64,7 +65,6 @@ recupDataLocation();
 
 // ---------------------function fetch meteo data---------------------------
 async function recupData() {
-  console.log(latitude, longitude);
   await fetch(
     "https://api.open-meteo.com/v1/meteofrance?latitude=" +
       latitude +
@@ -74,7 +74,7 @@ async function recupData() {
   )
     .then((response) => response.json())
     .then((data) => (meteoData = data));
-  console.log(latitude, longitude);
+
   await fetch(
     "https://marine-api.open-meteo.com/v1/marine?latitude=" +
       latitude +
@@ -98,13 +98,10 @@ function displayMap(latitude, longitude, modelViewMap) {
     center: [longitude, latitude], // starting position [lng, lat]
     zoom: 15, // starting zoom
   });
-  console.log(map);
 }
 
 // --------------------------function display meteo data---------------------------
 function meteoDataDisplay() {
-  console.log(meteoData);
-  console.log(meteoDataMarine);
   dateContainer.innerHTML = `<h3>Date</h3><p>${meteoData.hourly.time[
     hourSelect
   ].slice(0, 10)}</p>`;
@@ -119,10 +116,22 @@ function meteoDataDisplay() {
   waveDirection.innerHTML = `<h3>Direction de la houle</h3><p>${meteoDataMarine.hourly.wave_direction[hourSelect]} ${meteoDataMarine.hourly_units.wave_direction}</p>`;
   wavePeriod.innerHTML = `<h3>Periode de houle</h3><p>${meteoDataMarine.hourly.wave_period[hourSelect]} ${meteoDataMarine.hourly_units.wave_period}</p>`;
 
+  let angle = meteoData.hourly.winddirection_10m[hourSelect]; // Degree
+  //----------------------------------display Alert wind Direction--------------------------------------
+
+  alertWindDirection.innerHTML = "";
+  winddirection.style.backgroundColor = "";
+  if (
+    angle < locationData[locationId].orientationMin ||
+    angle > locationData[locationId].orientationMax
+  ) {
+    winddirection.style.backgroundColor = "red";
+    alertWindDirection.innerHTML = `<div class ="alertWindDirectionBox"><h2>ATTENTION</h2><p>Pensez à verifier l'orientation du vent</div></p>`;
+  }
+
   // -------------------------- display canvas wind direction----------------------------------------------------------
 
-  let angle = meteoData.hourly.winddirection_10m[hourSelect]; // Degree
-  // let angle = 180;
+  // let angle = 30;
   let axeX;
   let axeY;
   let axeXPrime;
@@ -137,7 +146,7 @@ function meteoDataDisplay() {
   // ctx.drawImage(imgFond, 0, 0, 1000, 1000);
 
   for (x = 0; x <= 1000; x += 50) {
-    for (y = 0; y <= 1000; y += 30) {
+    for (y = 0; y <= 1000; y += 50) {
       axeX = x + Math.random() * 50;
       axeY = y + Math.random() * 50;
       // axeX = x;
