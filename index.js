@@ -1,9 +1,11 @@
-//-------------Recup time -------------------------
+//-------------GET Data time -------------------------
 let date = new Date();
-// -------------------------------------------------
-console.log(window.innerWidth);
-console.log(window.innerHeight);
-//------------Initilaisation du canvas------------
+
+// --------------------WIDTH AND HEIGHT SCREEN-----------------------------
+// console.log(window.innerWidth);
+// console.log(window.innerHeight);
+
+//------------Initialisation du canvas------------
 
 let canvasWidthAndHeight = 1000;
 let mapZoomLevel = 15;
@@ -32,7 +34,7 @@ let meteoDataMarine = [];
 let hourSelect = date.getHours();
 let locationId = 0;
 
-//------------Initilaisation de la carte------------
+//------------Initialisation de la carte------------
 
 displayMap(latitude, longitude);
 
@@ -136,13 +138,30 @@ function meteoDataDisplay() {
   wavePeriod.innerHTML = `<h3>Periode de houle</h3><p>${meteoDataMarine.hourly.wave_period[hourSelect]} ${meteoDataMarine.hourly_units.wave_period}</p>`;
 
   let angle = meteoData.hourly.winddirection_10m[hourSelect]; // Degree
+  //let angle = 290; // ----> for testing
   //----------------------------------display Alert wind Direction--------------------------------------
 
   alertWindDirection.innerHTML = "";
   winddirection.style.backgroundColor = "";
+
+  console.log("angle du vent : " + angle);
+  console.log(
+    "angle minimum : " +
+      ((locationData[locationId].orientationBeach + 180) % 360)
+  );
+  console.log("angle maximum : " + locationData[locationId].orientationBeach);
+  console.log(
+    "angle plus petit que mini : " +
+      (angle < (locationData[locationId].orientationBeach + 180) % 360)
+  );
+  console.log(
+    "angle plus grand que max : " +
+      (angle > locationData[locationId].orientationBeach)
+  );
+
   if (
-    angle < locationData[locationId].orientationMin ||
-    angle > locationData[locationId].orientationMax
+    angle < (locationData[locationId].orientationBeach + 180) % 360 &&
+    angle > locationData[locationId].orientationBeach
   ) {
     winddirection.style.backgroundColor = "red";
     alertWindDirection.innerHTML = `<div class ="alertWindDirectionBox"><h2>ATTENTION</h2><p>Pensez à verifier l'orientation du vent</div></p>`;
@@ -150,7 +169,6 @@ function meteoDataDisplay() {
 
   // -------------------------- display canvas wind direction----------------------------------------------------------
 
-  // let angle = 30;
   let axeX;
   let axeY;
   let axeXPrime;
